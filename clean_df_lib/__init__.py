@@ -10,7 +10,7 @@ import os
 
 DEFAULT_DATA_PATH = os.path.join(os.path.dirname(__file__), "data")
 
-from .data_cleaning import (
+from .clean_df_lib import (
     detect_load_data,
     first_view_data,
     remove_invalid_data,
@@ -22,7 +22,14 @@ from .data_cleaning import (
     detect_outliers,
     handle_outliers,
     plot_distribution,
-    export_clean_data
+    export_clean_data,
+    find_matches,
+    replace_matches,
+    handle_high_cardinality,
+    clean_column_values,
+    plot_correlation_matrix,
+    clean_text_column,
+    categoric_inconsistent_wrang
 )
 
 __all__ = [
@@ -37,5 +44,12 @@ __all__ = [
     "detect_outliers",
     "handle_outliers",
     "plot_distribution",
-    "export_clean_data"
+    "export_clean_data",
+    "find_matches",
+    "replace_matches",
+    "handle_high_cardinality",
+    "clean_column_values",
+    "plot_correlation_matrix",
+    "clean_text_column",
+    "categoric_inconsistent_wrang"
 ]

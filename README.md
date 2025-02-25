@@ -1,6 +1,20 @@
-# Data Cleaning Toolkit
+# Clean DataFrames Library (clean_df_lib)
 
-This repository contains a collection of functions designed to facilitate the process of loading, cleaning, and transforming data in Python, especially focused on Exploratory Data Analysis (EDA).
+A Python package for cleaning and analyzing data in Pandas DataFrames. Provides functions for handling missing values, detecting outliers, and more.
+
+## Installation
+
+You can install this package via pip:
+
+```bash
+pip install clean-df-lib
+```
+
+Or directly from GitHub:
+
+```bash
+pip install git+https://github.com/your-username/clean-df-lib.git
+```
 
 ## License
 
@@ -17,14 +31,16 @@ This project is licensed under the GNU General Public License v3 (GPLv3). See th
 - Export of cleaned data in different formats
 
 ## Requirements
-numpy
-pandas
-matplotlib
-seaborn
-chardet
-rapidfuzz
-scipy
-nltk
+
+- numpy
+- pandas
+- matplotlib
+- seaborn
+- chardet
+- rapidfuzz
+- scipy
+- nltk
+
 ## Main Functions
 
 ### Data Loading
@@ -61,7 +77,7 @@ nltk
 
 - `clean_column_values(df, column, value_type="categorical", string_to_match=None, min_ratio=90, limit=10)`: General function to clean values in a column depending on the value type.
 
-- `categoric_incosistent_wrang(df, column)`: Returns a sorted list of unique values in a column, first alphabetically and then by frequency.
+- `categoric_inconsistent_wrang(df, column)`: Returns a sorted list of unique values in a column, first alphabetically and then by frequency.
 
 ### Visualization
 
@@ -85,36 +101,47 @@ nltk
 
 ```python
 # Import the module
-import data_cleaning_toolkit as dct
+import clean_df_lib as cdl
 
 # Load data with automatic encoding detection
-df = dct.detect_load_data("my_file.csv")
+df = cdl.detect_load_data("my_file.csv")
 
 # Initial exploration and visualization of missing data
-df = dct.first_view_data(df)
+df = cdl.first_view_data(df)
 
 # Remove invalid data
-df = dct.remove_invalid_data(df)
+df = cdl.remove_invalid_data(df)
 
 # Convert columns to their appropriate types
-df = dct.search_transf_num(df)
-df = dct.search_transf_cat(df)
-df = dct.search_transf_date(df, date_columns=["sale_date"], new_columns=True)
+df = cdl.search_transf_num(df)
+df = cdl.search_transf_cat(df)
+df = cdl.search_transf_date(df, date_columns=["sale_date"], new_columns=True)
 
 # Fill missing values
-df = dct.numeric_fill_nan(df)
-df = dct.categoric_fill_nan(df)
+df = cdl.numeric_fill_nan(df)
+df = cdl.categoric_fill_nan(df)
 
 # Detect and handle outliers
-outliers = dct.detect_outliers(df)
-df = dct.handle_outliers(df, outliers, action="transform", method="winsorize")
+outliers = cdl.detect_outliers(df)
+df = cdl.handle_outliers(df, outliers, action="transform", method="winsorize")
 
 # Visualize distributions
-dct.plot_distribution(df)
-dct.plot_correlation_matrix(df)
+cdl.plot_distribution(df)
+cdl.plot_correlation_matrix(df)
 
 # Export clean data
-dct.export_clean_data(df, "clean_data.csv")
+cdl.export_clean_data(df, "clean_data.csv")
+```
+
+## Development
+
+Clone the repository:
+```bash
+git clone https://github.com/your-username/clean-df-lib.git
+cd clean-df-lib
+pip install -e .
+```
 
 ## Contributions
+
 Contributions are welcome. Please open an issue or a pull request for suggestions or improvements.

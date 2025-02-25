@@ -71,8 +71,8 @@ def first_view_data(
     df.columns = df.columns.str.lower().str.strip()
 
     # Display basic info
-    display(df.head())
-    display(df.tail())
+    print(df.head())
+    print(df.tail())
     df.info()
 
     # Visualize missing values
@@ -131,7 +131,7 @@ def remove_invalid_data(df, nan_col_per=51, nan_row_per=51, object_threshold=3):
         round(100 * df[column].isnull().sum() / df.shape[0], 1) for column in df.columns
     ]
     # Display the NaN percentages in a DataFrame
-    display(pd.DataFrame(np.array(null_percent), index=df.columns, columns=["NaN_%"]).T)
+    print(pd.DataFrame(np.array(null_percent), index=df.columns, columns=["NaN_%"]).T)
 
     return df
 
@@ -354,7 +354,7 @@ def clean_column_values(
     if value_type == "categorical":
         # Check and fix categorical inconsistencies
         print(f"Cleaning categorical values in {column}...")
-        cat_counts = categoric_incosistent_wrang(df, column)
+        cat_counts = categoric_inconsistent_wrang(df, column)
         # Optional: Add logic to clean values based on fuzzy matching here
         # Example: Replace similar values using find_matches and replace_matches
         if string_to_match:
@@ -510,7 +510,7 @@ def export_clean_data(df, path, format="csv"):
     print(f"Data exported successfully to {path}")
 
 
-def categoric_incosistent_wrang(df, column):
+def categoric_inconsistent_wrang(df, column):
     """Returns a sorted list of unique values in a column, first alphabetically,
     then by the frequency of occurrences."""
     cat_counts = df[column].value_counts().to_dict()
